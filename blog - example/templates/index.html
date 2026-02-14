@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <div class="wiki-card">
+        <img src="{{ url_for('static', filename='eye.png') }}" class="wiki-eye" alt="Eye">
+
+        <h1>Ласкаво просимо на Little Nightmares Вікі!</h1>
+
+        <p>
+            Вітаємо вас у нашому співтоваристві. Наше основне завдання — якісне та зрозуміле
+            надання інформації про всесвіт <b>Little Nightmares</b>.
+            Тут ви знайдете все про мешканців Чрева та Блідого Міста.
+        </p>
+
+        <div style="margin-top: 20px; font-style: italic; color: #8f7a56; text-align: right;">
+            — Команда вікі
+        </div>
+    </div>
+
+    <div class="grid">
+        {% for section in sections %}
+            <a href="{{ url_for('section_page', section_slug=section['slug']) }}" class="card">
+
+                <img src="{{ url_for('static', filename=section['slug'] + '.jpg') }}"
+                     class="card-img"
+                     alt="{{ section['name'] }}"
+                     onerror="this.style.display='none'"> <h2>{{ section['name'] }}</h2>
+            </a>
+        {% else %}
+             <p style="text-align: center;">Розділів немає. Запустіть db.py!</p>
+        {% endfor %}
+    </div>
+
+{% endblock %}

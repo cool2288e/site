@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block title %}{{ section['name'] }}{% endblock %}
+
+{% block content %}
+
+    <div style="display: flex; justify-content: space-between; align-items: center;">
+        <h1>{{ section['name'] }}</h1>
+        <a href="{{ url_for('index') }}" class="btn" style="background-color: #333; color: #fff;">← Назад</a>
+    </div>
+
+    <hr style="border-color: #333; margin-bottom: 30px;">
+
+    {% for post in posts %}
+        <div class="post">
+            <div class="date" style="color: #888; font-size: 0.85em; margin-bottom: 10px;">
+                📅 Опубліковано: {{ post['created_at'] }}
+            </div>
+
+            <p style="font-size: 1.1em; line-height: 1.6;">{{ post['text'] }}</p>
+
+            {% if post['image'] %}
+                <img src="{{ url_for('static', filename=post['image']) }}"
+                     alt="Зображення поста"
+                     class="post-image"
+                     style="max-width: 100%; border-radius: 5px; margin-top: 15px; border: 1px solid #444;">
+            {% endif %}
+        </div>
+    {% else %}
+        <div style="text-align: center; padding: 50px; color: #666;">
+            <h3>Тут тихо... занадто тихо.</h3>
+            <p>У цьому розділі ще немає записів.</p>
+            <br>
+            <a href="{{ url_for('add_post') }}" class="btn">Додати перший запис</a>
+        </div>
+    {% endfor %}
+
+{% endblock %}
