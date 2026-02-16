@@ -4,35 +4,112 @@
 
 {% block content %}
 
-    <div style="display: flex; justify-content: space-between; align-items: center;">
-        <h1>{{ section['name'] }}</h1>
-        <a href="{{ url_for('index') }}" class="btn" style="background-color: #333; color: #fff;">← Назад</a>
-    </div>
+    <div class="main-content" style="width: 100%;">
 
-    <hr style="border-color: #333; margin-bottom: 30px;">
+        <div style="border-bottom: 3px solid #f1c40f; margin-bottom: 30px; padding-bottom: 10px;">
+            <h1 style="margin: 0; text-align: left;">{{ section['name'] }}</h1>
+        </div>
 
-    {% for post in posts %}
-        <div class="post">
-            <div class="date" style="color: #888; font-size: 0.85em; margin-bottom: 10px;">
-                📅 Опубліковано: {{ post['created_at'] }}
+        {% if section['slug'] == 'characters' %}
+
+            <div class="char-list">
+                <div class="char-card">
+                    <div class="char-text">
+                        <h3>Шоста (Six)</h3>
+                        <p>Маленька дівчинка у яскраво-жовтому дощовику. Вона прокидається у глибинах Чрева і намагається втекти.</p>
+                    </div>
+                    <div class="char-img-box">
+                        <img src="{{ url_for('static', filename='six.jpg') }}" class="char-img" alt="Six" onerror="this.style.display='none'">
+                    </div>
+                </div>
+
+                <div class="char-card">
+                    <div class="char-text">
+                        <h3>Втікач (Runaway Kid)</h3>
+                        <p>Головний герой DLC. Хлопчик, який також намагається втекти з Чрева через затоплені підвали.</p>
+                    </div>
+                    <div class="char-img-box">
+                        <img src="{{ url_for('static', filename='kid.jpg') }}" class="char-img" alt="Kid" onerror="this.style.display='none'">
+                    </div>
+                </div>
+
+                <div class="char-card">
+                    <div class="char-text">
+                        <h3>Леді (The Lady)</h3>
+                        <p>Володарка Чрева. Вона носить білу маску і панічно боїться дзеркал.</p>
+                    </div>
+                    <div class="char-img-box">
+                        <img src="{{ url_for('static', filename='lady.jpg') }}" class="char-img" alt="Lady" onerror="this.style.display='none'">
+                    </div>
+                </div>
+
+                 <div class="char-card">
+                    <div class="char-text">
+                        <h3>Доглядач (The Janitor)</h3>
+                        <p>Сліпий чоловік з довгими руками. Ловить дітей на слух.</p>
+                    </div>
+                    <div class="char-img-box">
+                        <img src="{{ url_for('static', filename='janitor.jpg') }}" class="char-img" alt="Janitor" onerror="this.style.display='none'">
+                    </div>
+                </div>
+
+                <div class="char-card">
+                    <div class="char-text">
+                        <h3>Кухарі (The Twin Chefs)</h3>
+                        <p>Жорстокі близнюки, що готують їжу для гостей.</p>
+                    </div>
+                    <div class="char-img-box">
+                        <img src="{{ url_for('static', filename='chefs.jpg') }}" class="char-img" alt="Chefs" onerror="this.style.display='none'">
+                    </div>
+                </div>
+
+                <div class="char-card">
+                    <div class="char-text">
+                        <h3>Бабуся (The Granny)</h3>
+                        <p>Зловісна сутність, що живе під водою.</p>
+                    </div>
+                    <div class="char-img-box">
+                        <img src="{{ url_for('static', filename='granny.jpg') }}" class="char-img" alt="Granny" onerror="this.style.display='none'">
+                    </div>
+                </div>
+
+                 <div class="char-card">
+                    <div class="char-text">
+                        <h3>Номи (Nomes)</h3>
+                        <p>Маленькі дружні істоти.</p>
+                    </div>
+                    <div class="char-img-box">
+                        <img src="{{ url_for('static', filename='nome.jpg') }}" class="char-img" alt="Nome" onerror="this.style.display='none'">
+                    </div>
+                </div>
+
             </div>
 
-            <p style="font-size: 1.1em; line-height: 1.6;">{{ post['text'] }}</p>
+        {% else %}
+            {% for post in posts %}
+                <div class="char-card" style="display: block;">
+                    <p style="font-size: 1.2em; color: #fff;">{{ post['text'] }}</p>
+                    {% if post['image'] %}
+                        <img src="{{ url_for('static', filename=post['image']) }}" style="width: 100%; margin-top: 15px; border-radius: 4px;">
+                    {% endif %}
+                    <div style="margin-top: 10px; font-size: 0.8em; color: #666;">
+                        {{ post['created_at'] }}
+                    </div>
+                </div>
+            {% else %}
+                <div style="text-align: center; padding: 50px; color: #666;">
+                    <h3>Тут тихо...</h3>
+                    <p>У цьому розділі ще немає записів.</p>
+                </div>
+            {% endfor %}
+        {% endif %}
 
-            {% if post['image'] %}
-                <img src="{{ url_for('static', filename=post['image']) }}"
-                     alt="Зображення поста"
-                     class="post-image"
-                     style="max-width: 100%; border-radius: 5px; margin-top: 15px; border: 1px solid #444;">
-            {% endif %}
+        <div class="back-btn-container">
+            <a href="{{ url_for('index') }}" class="wiki-btn">
+                Назад в меню
+            </a>
         </div>
-    {% else %}
-        <div style="text-align: center; padding: 50px; color: #666;">
-            <h3>Тут тихо... занадто тихо.</h3>
-            <p>У цьому розділі ще немає записів.</p>
-            <br>
-            <a href="{{ url_for('add_post') }}" class="btn">Додати перший запис</a>
-        </div>
-    {% endfor %}
 
-{% endblock %}
+    </div>
+
+    {% endblock %}

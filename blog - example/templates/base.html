@@ -2,23 +2,23 @@
 <html lang="uk">
 <head>
     <meta charset="UTF-8">
-    <title>{% block title %}Little Nightmares Wiki{% endblock %}</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Little Nightmares Fan Site</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}?v=3">
 </head>
 <body>
 
     <header>
         <nav>
-            <a href="/" class="logo">Little Nightmares Wiki</a>
-            <div>
-                <a href="/">ГОЛОВНА</a>
-                <a href="#">ДОСЛІДЖУВАТИ</a>
-                <a href="/add" class="btn-nav">+ ДОДАТИ</a>
+            <a href="/" class="logo">LITTLE NIGHTMARES</a>
+
+            <div style="margin-left: auto;">
+                <a href="/" style="color: #fff; margin-right: 20px;">ГОЛОВНА</a>
+                <a href="/add" style="color: #f1c40f;">+ ДОДАТИ</a>
             </div>
         </nav>
     </header>
 
-    <div class="container">
+    <div class="wiki-wrapper">
         {% block content %}{% endblock %}
     </div>
 
