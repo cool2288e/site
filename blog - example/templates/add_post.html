@@ -2,22 +2,42 @@
 {% block title %}Додати пост{% endblock %}
 
 {% block content %}
-<h2>Новий пост</h2>
+<div class="main-content" style="max-width: 600px; margin: 0 auto; background-color: #222; padding: 30px; border-radius: 8px; border: 1px solid #444; box-shadow: 0 4px 10px rgba(0,0,0,0.5);">
 
-<form method="post">
-    <label>Текст посту:</label><br>
-    <textarea name="text" required rows="5"></textarea><br><br>
+    <h2 style="color: #f1c40f; border-bottom: 2px solid #f1c40f; padding-bottom: 10px; margin-top: 0;">Новий запис у Вікі</h2>
 
-    <label>Посилання на зображення:</label><br>
-    <input type="text" name="image"><br><br>
+    <form method="post" style="display: flex; flex-direction: column; gap: 15px; margin-top: 20px;">
 
-    <label>Розділ:</label><br>
-    <select name="section" required>
-        {% for section in sections %}
-            <option value="{{ section.id }}">{{ section.name }}</option>
-        {% endfor %}
-    </select><br><br>
+        <div>
+            <label style="color: #ccc; font-weight: bold;">Заголовок (Назва):</label><br>
+            <input type="text" name="title" required placeholder="Наприклад: В'язниця, Шоста або Теорія про Око" style="width: 100%; padding: 10px; margin-top: 5px; border-radius: 4px; border: 1px solid #555; background-color: #333; color: white; box-sizing: border-box;">
+        </div>
 
-    <button type="submit">Опублікувати</button>
-</form>
+        <div>
+            <label style="color: #ccc; font-weight: bold;">Текст посту:</label><br>
+            <textarea name="text" required rows="8" placeholder="Детальний опис..." style="width: 100%; padding: 10px; margin-top: 5px; border-radius: 4px; border: 1px solid #555; background-color: #333; color: white; box-sizing: border-box; resize: vertical;"></textarea>
+        </div>
+
+        <div>
+            <label style="color: #ccc; font-weight: bold;">Назва файлу картинки (необов'язково):</label><br>
+            <input type="text" name="image" placeholder="Наприклад: six.jpg" style="width: 100%; padding: 10px; margin-top: 5px; border-radius: 4px; border: 1px solid #555; background-color: #333; color: white; box-sizing: border-box;">
+        </div>
+
+        <div>
+            <label style="color: #ccc; font-weight: bold;">Розділ:</label><br>
+            <select name="section" required style="width: 100%; padding: 10px; margin-top: 5px; border-radius: 4px; border: 1px solid #555; background-color: #333; color: white; box-sizing: border-box;">
+                {% for section in sections %}
+                    {% if section.slug != 'monsters' %}
+                        <option value="{{ section.id }}">{{ section.name }}</option>
+                    {% endif %}
+                {% endfor %}
+            </select>
+        </div>
+
+        <button type="submit" class="wiki-btn" style="margin-top: 15px; width: 100%; cursor: pointer; text-align: center; border: 1px solid #f1c40f;">
+            ОПУБЛІКУВАТИ
+        </button>
+    </form>
+
+</div>
 {% endblock %}

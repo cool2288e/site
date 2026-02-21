@@ -1,8 +1,8 @@
-
 from flask import Flask, render_template, request, redirect, url_for
 from db import *
 
 app = Flask(__name__)
+
 
 @app.route("/")
 def index():
@@ -20,24 +20,27 @@ def section_page(section_slug):
 
     posts = get_section_posts(section["id"])
 
-    return render_template("section.html", sections=sections, section=section,
-                           posts=posts)
+    return render_template("section.html", sections=sections, section=section, posts=posts)
 
 
 # ---------- ДОДАВАННЯ ПОСТУ ----------
-
 @app.route("/add", methods=["GET", "POST"])
 def add_post():
     sections = get_blog_sections()
 
     if request.method == "POST":
+        title = request.form["title"]  # Отримуємо заголовок!
         text = request.form["text"]
         image = request.form["image"]
         section_id = int(request.form["section"])
-        create_new_post(text, image, section_id)
+
+        create_new_post(title, text, image, section_id)
         section = get_section_by_id(section_id)
         return redirect(url_for("section_page", section_slug=section["slug"]))
 
     return render_template("add_post.html", sections=sections)
 
-app.run()
+
+if __name__ == "__main__":
+    init_db()  # Ініціалізуємо БД при старті
+    app.run(debug=True)

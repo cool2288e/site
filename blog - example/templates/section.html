@@ -1,22 +1,30 @@
 {% extends "base.html" %}
 
-{% block title %}{{ section['name'] }}{% endblock %}
+{% block title %}
+    {% if section['name']|lower == 'монстри' %}ТРЕЙЛЕР{% else %}{{ section['name'] }}{% endif %}
+{% endblock %}
 
 {% block content %}
 
     <div class="main-content" style="width: 100%;">
 
         <div style="border-bottom: 3px solid #f1c40f; margin-bottom: 30px; padding-bottom: 10px;">
-            <h1 style="margin: 0; text-align: left;">{{ section['name'] }}</h1>
+            <h1 style="margin: 0; text-align: left;">
+                {% if section['name']|lower == 'монстри' %}
+                    ТРЕЙЛЕР ТА МУЗИКА
+                {% else %}
+                    {{ section['name'] }}
+                {% endif %}
+            </h1>
         </div>
 
         {% if section['slug'] == 'characters' %}
 
-            <div class="char-list">
+            <div class="char-list" style="display: flex; flex-direction: column; gap: 20px;">
                 <div class="char-card">
                     <div class="char-text">
-                        <h3>Шоста (Six)</h3>
-                        <p>Маленька дівчинка у яскраво-жовтому дощовику. Вона прокидається у глибинах Чрева і намагається втекти.</p>
+                        <h3 style="color: #f1c40f; margin-top: 0; font-size: 1.5em;">Шоста (Six)</h3>
+                        <p style="color: #ccc; line-height: 1.6; text-align: justify;">Шоста — головна героїня гри, крихітна дев'ятирічна дівчинка в яскраво-жовтому дощовику, яка озброєна лише запальничкою. Вона прокидається на самому дні Чрева і намагається знайти шлях на свободу. Шоста не є типовим добрим героєм: вона мовчазна, спостережлива і безжальна у своєму прагненні вижити. Протягом гри її переслідують страшні напади неконтрольованого голоду, які змушують її їсти все, що трапиться під руку — від щура в мишоловці до живого Нома. Зрештою, вона поглинає темну силу Леді, стаючи найнебезпечнішою істотою на кораблі.</p>
                     </div>
                     <div class="char-img-box">
                         <img src="{{ url_for('static', filename='six.jpg') }}" class="char-img" alt="Six" onerror="this.style.display='none'">
@@ -25,8 +33,8 @@
 
                 <div class="char-card">
                     <div class="char-text">
-                        <h3>Втікач (Runaway Kid)</h3>
-                        <p>Головний герой DLC. Хлопчик, який також намагається втекти з Чрева через затоплені підвали.</p>
+                        <h3 style="color: #f1c40f; margin-top: 0; font-size: 1.5em;">Втікач (Runaway Kid)</h3>
+                        <p style="color: #ccc; line-height: 1.6; text-align: justify;">Втікач (або Хлопчик) — головний герой сюжетного доповнення «Таємниці Чрева» (Secrets of the Maw). Це хлопчик у синій кофтині з кайданом на правій нозі, який прокидається в затоплених глибинах Чрева. Його шлях іде паралельно з історією Шостої, і він дізнається набагато більше секретів цього жахливого місця. На жаль, його доля виявляється ще трагічнішою: наприкінці свого шляху він стикається з Леді, яка за допомогою магії перетворює його на Нома. Саме він стає тим самим добрим Номом, який пропонує сосиску голодній Шостій, і якого вона безжально з'їдає.</p>
                     </div>
                     <div class="char-img-box">
                         <img src="{{ url_for('static', filename='kid.jpg') }}" class="char-img" alt="Kid" onerror="this.style.display='none'">
@@ -35,8 +43,8 @@
 
                 <div class="char-card">
                     <div class="char-text">
-                        <h3>Леді (The Lady)</h3>
-                        <p>Володарка Чрева. Вона носить білу маску і панічно боїться дзеркал.</p>
+                        <h3 style="color: #f1c40f; margin-top: 0; font-size: 1.5em;">Леді (The Lady)</h3>
+                        <p style="color: #ccc; line-height: 1.6; text-align: justify;">Леді — абсолютна володарка Чрева, яка контролює все, що відбувається на цьому жахливому підводному судні. Вона носить елегантне кімоно та білу порцелянову маску, яка приховує її справжнє обличчя. Леді володіє потужною темною магією: вона здатна висмоктувати життєву енергію, перетворювати дітей на Номів і левітувати у темряві. Вона панічно боїться свого власного відображення, тому в її покоях розбиті всі дзеркала. Її головна мета — підтримувати безперервний цикл роботи Чрева, куди прибувають Гості, щоб наїстися і стати джерелом енергії (або м'яса) для неї.</p>
                     </div>
                     <div class="char-img-box">
                         <img src="{{ url_for('static', filename='lady.jpg') }}" class="char-img" alt="Lady" onerror="this.style.display='none'">
@@ -45,8 +53,8 @@
 
                  <div class="char-card">
                     <div class="char-text">
-                        <h3>Доглядач (The Janitor)</h3>
-                        <p>Сліпий чоловік з довгими руками. Ловить дітей на слух.</p>
+                        <h3 style="color: #f1c40f; margin-top: 0; font-size: 1.5em;">Доглядач (The Janitor)</h3>
+                        <p style="color: #ccc; line-height: 1.6; text-align: justify;">Доглядач (його також називають Роджер) — моторошний сліпий чоловік із неймовірно довгими руками та короткими ногами. Його очі закриті шаром звисаючої шкіри, але це не робить його менш небезпечним. Завдяки феноменальному слуху та гострому нюху він здатен вистежити будь-яку дитину навіть у повній темряві. Його головне завдання — доглядати за механізмами Чрева, а також ловити дітей-втікачів, щільно замотувати їх у папір і відправляти на кухню по гаках як «свіже м'ясо» для Кухарів.</p>
                     </div>
                     <div class="char-img-box">
                         <img src="{{ url_for('static', filename='janitor.jpg') }}" class="char-img" alt="Janitor" onerror="this.style.display='none'">
@@ -55,8 +63,8 @@
 
                 <div class="char-card">
                     <div class="char-text">
-                        <h3>Кухарі (The Twin Chefs)</h3>
-                        <p>Жорстокі близнюки, що готують їжу для гостей.</p>
+                        <h3 style="color: #f1c40f; margin-top: 0; font-size: 1.5em;">Кухарі (The Twin Chefs)</h3>
+                        <p style="color: #ccc; line-height: 1.6; text-align: justify;">Кухарі-близнюки — це огидні, гладкі та надзвичайно жорстокі брати, які відповідають за приготування їжі для Гостей. Вони носять моторошні маски, зшиті зі шкіри, які ледь приховують їхні власні потворні обличчя. Близнюки постійно кашляють, важко дихають і поводяться дуже агресивно, якщо помітять у своїх володіннях порушника. Вони постійно рубають м'ясо невідомого походження, готують величезні страви і є ключовою ланкою в жахливому харчовому конвеєрі Чрева.</p>
                     </div>
                     <div class="char-img-box">
                         <img src="{{ url_for('static', filename='chefs.jpg') }}" class="char-img" alt="Chefs" onerror="this.style.display='none'">
@@ -65,8 +73,8 @@
 
                 <div class="char-card">
                     <div class="char-text">
-                        <h3>Бабуся (The Granny)</h3>
-                        <p>Зловісна сутність, що живе під водою.</p>
+                        <h3 style="color: #f1c40f; margin-top: 0; font-size: 1.5em;">Бабуся (The Granny)</h3>
+                        <p style="color: #ccc; line-height: 1.6; text-align: justify;">Бабуся — жахлива та мстива сутність, яка живе в затоплених, найтемніших підвалах Чрева (Глибинах). Колись вона, можливо, теж працювала на кораблі, але потім її покинули гнити у воді, де вона повністю здичавіла. Бабуся дуже швидко плаває під водою і постійно намагається схопити Втікача, руйнуючи хиткі платформи, на яких він стоїть. Хлопчику вдається перемогти її тільки завдяки кмітливості: він скидає у воду увімкнений телевізор, що призводить до смертельного удару струмом.</p>
                     </div>
                     <div class="char-img-box">
                         <img src="{{ url_for('static', filename='granny.jpg') }}" class="char-img" alt="Granny" onerror="this.style.display='none'">
@@ -75,12 +83,138 @@
 
                  <div class="char-card">
                     <div class="char-text">
-                        <h3>Номи (Nomes)</h3>
-                        <p>Маленькі дружні істоти.</p>
+                        <h3 style="color: #f1c40f; margin-top: 0; font-size: 1.5em;">Номи (Nomes)</h3>
+                        <p style="color: #ccc; line-height: 1.6; text-align: justify;">Номи — це маленькі, полохливі та миролюбні істотки з конусоподібними головами, які нагадують гриби. Вони ховаються по кутках Чрева і розбігаються при будь-якому шумі. Довгий час вважалося, що це просто місцеві мешканці корабля, але доповнення розкрило їхню страшну таємницю: Номи — це колишні людські діти. Леді використовувала чорну магію, щоб перетворити їх на цих покірних істот, змусивши їх вічно і бездумно працювати в котельнях, кидаючи вугілля в печі для підтримки роботи двигунів Чрева.</p>
                     </div>
                     <div class="char-img-box">
                         <img src="{{ url_for('static', filename='nome.jpg') }}" class="char-img" alt="Nome" onerror="this.style.display='none'">
                     </div>
+                </div>
+            </div>
+
+        {% elif section['name']|lower == 'монстри' %}
+
+            <div style="text-align: center; margin-bottom: 40px;">
+                <iframe width="100%" height="450" src="https://www.youtube.com/embed/sKIY4chtaBU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen style="border: 2px solid #555; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.5);"></iframe>
+            </div>
+
+            <div style="margin-top: 50px;">
+                <div style="border-bottom: 2px solid #f1c40f; margin-bottom: 20px; padding-bottom: 5px;">
+                    <h2 style="margin: 0;">Музика</h2>
+                </div>
+
+                <div class="music-list" style="display: flex; flex-direction: column; gap: 20px;">
+                    <div class="music-item" style="background-color: #222; padding: 15px; border-radius: 5px; border: 1px solid #444;">
+                        <p style="margin-top: 0; color: #f1c40f; font-weight: bold;">Main Theme (Головна тема)</p>
+                        <audio controls style="width: 100%;">
+                            <source src="{{ url_for('static', filename='sounds/theme1.mp3') }}" type="audio/mpeg">
+                            Ваш браузер не підтримує аудіоплеєр.
+                        </audio>
+                    </div>
+
+                    <div class="music-item" style="background-color: #222; padding: 15px; border-radius: 5px; border: 1px solid #444;">
+                        <p style="margin-top: 0; color: #f1c40f; font-weight: bold;">Six's Theme (Тема Шостої)</p>
+                        <audio controls style="width: 100%;">
+                            <source src="{{ url_for('static', filename='sounds/theme2.mp3') }}" type="audio/mpeg">
+                            Ваш браузер не підтримує аудіоплеєр.
+                        </audio>
+                    </div>
+                </div>
+            </div>
+
+        {% elif section['name']|lower == 'теорії' %}
+
+            <div class="theories-list" style="display: flex; flex-direction: column; gap: 25px;">
+
+                <div class="char-card" style="display: block; padding: 25px;">
+                    <h2 style="color: #f1c40f; margin-top: 0;">1. Нескінченна часова петля (Доля Моно)</h2>
+                    <p style="color: #ccc; line-height: 1.6; text-align: justify;">
+                        Це одна з найпопулярніших і найтрагічніших теорій, яка підтвердилася у фіналі <b>Little Nightmares II</b>. Згідно з нею, Моно, хлопчик у паперовому пакеті, приречений на вічні страждання. Після того як Шоста зраджує його і відпускає руку над прірвою у Сигнальній Вежі, він падає на дно з м'яса та очей. З роками, під впливом викривленого часу Вежі, Моно виростає і перетворюється на <b>Тонку Людину</b> (The Thin Man) — того самого монстра, від якого він намагався втекти. Коли новий Моно приходить у Бліде Місто, цикл повторюється знову і знову.
+                    </p>
+                </div>
+
+                <div class="char-card" style="display: block; padding: 25px;">
+                    <h2 style="color: #f1c40f; margin-top: 0;">2. Чрево — це ферма з вирощування м'яса</h2>
+                    <p style="color: #ccc; line-height: 1.6; text-align: justify;">
+                        Якщо уважно придивитися до подій першої частини гри, можна зрозуміти жахливу мету Чрева (The Maw). Це не просто ресторан для багатіїв. Гості, які прибувають туди і жадібно поглинають їжу, самі стають цією їжею. Леді змушує Кухарів відгодовувати Гостей до неймовірних розмірів, після чого їх вбивають і переробляють на сосиски та стейки для наступної партії відвідувачів. Це безперервний конвеєр обжерливості, який підтримує життя Чрева.
+                    </p>
+                </div>
+
+                <div class="char-card" style="display: block; padding: 25px;">
+                    <h2 style="color: #f1c40f; margin-top: 0;">3. Шоста — наступниця Леді</h2>
+                    <p style="color: #ccc; line-height: 1.6; text-align: justify;">
+                        Багато гравців помітили портрети дівчинки у кімнатах Леді, що породило теорію: Шоста може бути донькою Леді, яку та викинула через свою одержимість красою. Проте є й інший варіант. У фіналі гри Шоста не просто вбиває Леді, вона її з'їдає, переймаючи її темну магію. Коли Шоста йде коридором, висмоктуючи життя з Гостей, вона де-факто стає новою господаркою Чрева. Її жахливий голод — це прокляття, яке передається від однієї господині до іншої.
+                    </p>
+                </div>
+
+                <div class="char-card" style="display: block; padding: 25px;">
+                    <h2 style="color: #f1c40f; margin-top: 0;">4. Сім смертних гріхів</h2>
+                    <p style="color: #ccc; line-height: 1.6; text-align: justify;">
+                        Світ Little Nightmares глибоко символічний. Фанатська спільнота помітила, що монстри уособлюють класичні людські вади. <b>Гості</b> — це абсолютна Обжерливість. <b>Доглядач</b> (Сліпий) з його любов'ю до колекціонування дітей та іграшок — Жадібність. <b>Леді</b>, яка розбиває всі дзеркала через страх перед своїм обличчям — Гординя. А сама <b>Шоста</b>, з її неконтрольованим голодом і холоднокровністю, поступово вбирає в себе ці гріхи, перетворюючись на найстрашнішого монстра з усіх.
+                    </p>
+                </div>
+
+                <div class="char-card" style="display: block; padding: 25px;">
+                    <h2 style="color: #f1c40f; margin-top: 0;">5. Справжня природа Номів</h2>
+                    <p style="color: #ccc; line-height: 1.6; text-align: justify;">
+                        Довгий час Номи вважалися просто милими мешканцями Чрева. Але в DLC <i>"Secrets of the Maw"</i> розкривається моторошна правда: Номи — це насправді діти, яких Леді перетворила за допомогою своєї чорної магії, щоб вони беззаперечно працювали в котельнях. Ця теорія робить момент з основної гри, коли Шоста відмовляється від сосиски і з'їдає живого Нома (яким виявився хлопчик-Втікач), мабуть, найтемнішим епізодом в історії гри.
+                    </p>
+                </div>
+
+                <div class="char-card" style="display: block; padding: 25px;">
+                    <h2 style="color: #f1c40f; margin-top: 0;">6. Око керує всім (М'ясні стіни)</h2>
+                    <p style="color: #ccc; line-height: 1.6; text-align: justify;">
+                        Всюди у світі гри — на стінах Чрева, на телевізорах, у головоломках — ми бачимо символ Ока. Теорія стверджує, що справжнім лиходієм є не Леді чи Тонка Людина, а гігантська космічна сутність, що складається з пульсуючого м'яса та безлічі очей. Її серцевина знаходиться у Сигнальній Вежі. Ця сутність живиться дитячими страхами та викривляє реальність навколо, а Леді та Тонка Людина — лише її маріонетки-наглядачі.
+                    </p>
+                </div>
+
+                <div class="char-card" style="display: block; padding: 25px;">
+                    <h2 style="color: #f1c40f; margin-top: 0;">7. Походження Жовтого дощовика</h2>
+                    <p style="color: #ccc; line-height: 1.6; text-align: justify;">
+                        Жовтий дощовик Шостої — найвпізнаваніший символ гри. Але звідки він взявся? У мобільній грі-приквелі <i>Very Little Nightmares</i> ми граємо за іншу дівчинку в такому ж дощовику. У фіналі вона героїчно гине, падаючи зі скелі, і залишає дощовик у воді. Теорія свідчить, що Шоста (яка весь цей час таємно йшла за нею) знайшла його і вдягнула на честь загиблої подруги, зробивши дощовик своєрідним символом виживання.
+                    </p>
+                </div>
+
+                <div class="char-card" style="display: block; padding: 25px;">
+                    <h2 style="color: #f1c40f; margin-top: 0;">8. Ким був Повішений чоловік?</h2>
+                    <p style="color: #ccc; line-height: 1.6; text-align: justify;">
+                        На самому початку першої гри Шоста прокидається і відразу натрапляє на кімнату, де зі стелі звисає повішений чоловік із неприродно довгими ногами. Хто він такий? Фанати сперечаються досі. Одні вважають, що це попередній господар Чрева або так званий Дзвінар (The Bellman) — концептуальний персонаж, якого вирізали з фінальної версії гри. Інша, більш моторошна версія: це був чоловік Леді (або навіть батько Шостої), який просто не зміг витримати жахів цього світу і наклав на себе руки.
+                    </p>
+                </div>
+
+            </div>
+
+        {% elif section['name']|lower == 'локації' %}
+            <div class="locations-list" style="display: flex; flex-direction: column; gap: 30px;">
+
+                <div class="char-card" style="display: block; padding: 20px;">
+                    <img src="{{ url_for('static', filename='prison.jpg') }}" alt="The Prison" style="width: 100%; border-radius: 8px; border: 1px solid #444; margin-bottom: 20px; box-shadow: 0 4px 8px rgba(0,0,0,0.3);" onerror="this.style.display='none'">
+                    <h2 style="color: #f1c40f; margin-top: 0; margin-bottom: 10px;">В'язниця (The Prison)</h2>
+                    <p style="color: #ccc; line-height: 1.6; text-align: justify; margin-bottom: 0;">Найнижчий рівень Чрева і стартова локація гри. Тут Шоста прокидається у валізі. У цій локації ми вчимося ховатися в тіні, обходити перші пастки-очі, пробираємося повз сплячих дітей у клітках і вперше стикаємося з жахливим Доглядачем.</p>
+                </div>
+
+                <div class="char-card" style="display: block; padding: 20px;">
+                    <img src="{{ url_for('static', filename='lair.jpg') }}" alt="The Lair" style="width: 100%; border-radius: 8px; border: 1px solid #444; margin-bottom: 20px; box-shadow: 0 4px 8px rgba(0,0,0,0.3);" onerror="this.style.display='none'">
+                    <h2 style="color: #f1c40f; margin-top: 0; margin-bottom: 10px;">Лігво (The Lair)</h2>
+                    <p style="color: #ccc; line-height: 1.6; text-align: justify; margin-bottom: 0;">Володіння Доглядача. Це моторошне місце, завалене старими іграшками, валізами та клітками. Тут ми розв'язуємо просторові головоломки, ховаємося від довгих рук сліпого монстра і врешті-решт перемагаємо його, відрубавши йому руки дверима.</p>
+                </div>
+
+                <div class="char-card" style="display: block; padding: 20px;">
+                    <img src="{{ url_for('static', filename='kitchen.jpg') }}" alt="The Kitchen" style="width: 100%; border-radius: 8px; border: 1px solid #444; margin-bottom: 20px; box-shadow: 0 4px 8px rgba(0,0,0,0.3);" onerror="this.style.display='none'">
+                    <h2 style="color: #f1c40f; margin-top: 0; margin-bottom: 10px;">Кухня (The Kitchen)</h2>
+                    <p style="color: #ccc; line-height: 1.6; text-align: justify; margin-bottom: 0;">Царство жорстоких Кухарів-близнюків. У цій локації ми постійно ховаємося під столами, бігаємо по полицях із посудом і використовуємо гаки для м'яса, щоб пересуватися під стелею. Головна мета — непомітно прокрастися і не потрапити Кухарям в суп.</p>
+                </div>
+
+                <div class="char-card" style="display: block; padding: 20px;">
+                    <img src="{{ url_for('static', filename='guest_area.jpg') }}" alt="The Guest Area" style="width: 100%; border-radius: 8px; border: 1px solid #444; margin-bottom: 20px; box-shadow: 0 4px 8px rgba(0,0,0,0.3);" onerror="this.style.display='none'">
+                    <h2 style="color: #f1c40f; margin-top: 0; margin-bottom: 10px;">Гостьова зона (The Guest Area)</h2>
+                    <p style="color: #ccc; line-height: 1.6; text-align: justify; margin-bottom: 0;">Розкішна, але огидна їдальня в японському стилі. Сюди прибувають масивні Гості, щоб безперервно їсти. Нам доводиться бігти прямо по їхніх столах, ухиляючись від жадібних рук, і тікати від цілої хвилі розлючених монстрів.</p>
+                </div>
+
+                <div class="char-card" style="display: block; padding: 20px;">
+                    <img src="{{ url_for('static', filename='lady_room.jpg') }}" alt="The Lady's Quarters" style="width: 100%; border-radius: 8px; border: 1px solid #444; margin-bottom: 20px; box-shadow: 0 4px 8px rgba(0,0,0,0.3);" onerror="this.style.display='none'">
+                    <h2 style="color: #f1c40f; margin-top: 0; margin-bottom: 10px;">Покої Леді (The Lady's Quarters)</h2>
+                    <p style="color: #ccc; line-height: 1.6; text-align: justify; margin-bottom: 0;">Фінальна локація гри. Елегантні кімнати, заставлені розбитими дзеркалами та манекенами. Тут ми крадемося за спиною моторошної Леді, знаходимо єдине ціле дзеркало і використовуємо його у фінальній битві, щоб відбивати світло на господиню Чрева.</p>
                 </div>
 
             </div>
@@ -104,7 +238,7 @@
             {% endfor %}
         {% endif %}
 
-        <div class="back-btn-container">
+        <div class="back-btn-container" style="margin-top: 50px;">
             <a href="{{ url_for('index') }}" class="wiki-btn">
                 Назад в меню
             </a>
@@ -112,4 +246,4 @@
 
     </div>
 
-    {% endblock %}
+{% endblock %}

@@ -11,7 +11,7 @@ conn.executemany("""
             VALUES (?, ?)""",
                  [
                      ("Персонажі", "characters"),
-                     ("Монстри", "monsters"),
+                     ("Трейлер", "monsters"),
                      ("Локації", "locations"),
                      ("Теорії", "theories")
                  ],

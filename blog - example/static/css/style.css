@@ -2,11 +2,17 @@
 
 /* --- ГОЛОВНІ НАЛАШТУВАННЯ ФОНУ --- */
 html, body {
-    /* min-height гарантує, що фон тягнеться до низу, а не обривається */
     min-height: 100vh;
     margin: 0;
     padding: 0;
-    background-color: #080706 !important;
+
+    /* ДОДАЄМО КАРТИНКУ ФОНУ ТУТ */
+    background-image: url('../bg.jpg'); /* Шлях до картинки з папки css назад у static */
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* Ефект паралаксу (не рухається при скролі) */
+    background-color: #080706; /* Підстраховка */
+
     color: #e6e6e6;
     font-family: 'Open Sans', sans-serif;
     display: flex;
@@ -15,7 +21,7 @@ html, body {
 
 /* Верхня панель меню */
 header {
-    background-color: #1a1816;
+    background-color: rgba(26, 24, 22, 0.95); /* Зробив меню трішки напівпрозорим */
     border-bottom: 3px solid #f1c40f;
     position: sticky;
     top: 0;
@@ -42,11 +48,28 @@ nav {
     letter-spacing: 1px;
 }
 
-/* --- ОСНОВНИЙ БЛОК (ТОЙ САМИЙ СІРИЙ КВАДРАТ) --- */
+nav a {
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+nav a:hover {
+    color: #fff !important;
+}
+
+/* --- ОСНОВНИЙ БЛОК (СЕКРЕТ КРАСИВОГО ФОНУ) --- */
 .wiki-wrapper {
     width: 100%;
     max-width: 1200px;
-    background-color: #2b2824;
+
+    /* Робимо фон напівпрозорим темно-сірим (90% непрозорості) */
+    background-color: rgba(30, 28, 26, 0.9) !important;
+
+    /* Додаємо круте розмиття фону під текстом (матове скло) */
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+
     margin: 0 auto;
     padding: 40px;
     border-left: 2px solid #423c35;
@@ -54,10 +77,9 @@ nav {
     display: flex;
     flex-direction: row;
     gap: 30px;
-
-    /* Змушує блок розтягуватися до кінця сторінки */
     flex: 1;
     box-sizing: border-box;
+    box-shadow: 0 0 50px rgba(0,0,0,0.9); /* Велика тінь по краях */
 }
 
 .main-content {
@@ -115,7 +137,7 @@ h2 {
 
 .wiki-btn {
     display: block;
-    background-color: #1a1816;
+    background-color: rgba(26, 24, 22, 0.8);
     border: 3px solid #f1c40f;
     color: #f1c40f;
     padding: 22px 30px;
@@ -141,12 +163,12 @@ h2 {
 .char-list {
     display: flex;
     flex-direction: column;
-    gap: 25px; /* Повернув роздільні картки, як ти просив */
+    gap: 25px;
     margin-bottom: 40px;
 }
 
 .char-card {
-    background-color: #1e1c1a;
+    background-color: rgba(30, 28, 26, 0.6);
     border: 1px solid #423c35;
     padding: 20px;
     border-radius: 10px;
@@ -160,6 +182,7 @@ h2 {
 .char-card:hover {
     border-color: #f1c40f;
     transform: translateX(8px);
+    background-color: rgba(40, 38, 36, 0.8);
 }
 
 .char-text {

@@ -4,15 +4,47 @@
     <meta charset="UTF-8">
     <title>Little Nightmares Fan Site</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}?v=3">
+
+    <style>
+        /* Налаштовуємо шпалери на весь екран */
+        body {
+            /* Шукаємо картинку bg.jpg у папці static */
+            background-image: url("{{ url_for('static', filename='bg.jpg') }}");
+            background-size: cover; /* Картинка розтягується на весь екран */
+            background-position: center; /* Центруємо картинку */
+            background-attachment: fixed; /* РОБИТЬ ФОН НЕЗМІННИМ ПРИ ПРОКРУТЦІ (Ефект паралаксу) */
+            background-color: #111; /* Підстраховка: темний колір, поки вантажиться фото */
+            margin: 0;
+        }
+
+        /* Робимо центральний блок напівпрозорим, щоб було видно фон і легко читався текст */
+        .wiki-wrapper {
+            /* rgba(30, 30, 30, 0.85) — це темно-сірий колір із прозорістю 85% */
+            background-color: rgba(30, 30, 30, 0.85) !important;
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.8); /* Робимо красиву темну тінь по краях блоку */
+            min-height: 100vh; /* Щоб блок завжди був на всю висоту екрана */
+            /* Якщо у вас є padding в style.css, він збережеться */
+        }
+
+        /* Трохи покращуємо вигляд навігації */
+        nav a {
+            text-decoration: none; /* Прибираємо підкреслення під посиланнями */
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+        nav a:hover {
+            color: #fff !important; /* Білий колір при наведенні */
+        }
+    </style>
 </head>
 <body>
 
-    <header>
+    <header style="background-color: rgba(15, 15, 15, 0.95); box-shadow: 0 2px 10px rgba(0,0,0,0.5);">
         <nav>
             <a href="/" class="logo">LITTLE NIGHTMARES</a>
 
             <div style="margin-left: auto;">
-                <a href="/" style="color: #fff; margin-right: 20px;">ГОЛОВНА</a>
+                <a href="/" style="color: #ccc; margin-right: 20px;">ГОЛОВНА</a>
                 <a href="/add" style="color: #f1c40f;">+ ДОДАТИ</a>
             </div>
         </nav>

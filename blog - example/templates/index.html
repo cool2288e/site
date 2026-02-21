@@ -2,20 +2,174 @@
 
 {% block content %}
 
+    <style>
+        /* Стилі спеціально для нової крутої Вікі-панелі (Інфобоксу) */
+        .infobox {
+            background-color: #382f22 !important;
+            border: none !important;
+            border-radius: 12px !important;
+            padding: 0 !important;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+        }
+        .infobox-title {
+            font-family: 'Amatic SC', cursive;
+            font-size: 3rem;
+            color: #1a1816;
+            background-color: #a89160;
+            text-align: center;
+            padding: 5px 0;
+            margin: 0;
+            letter-spacing: 1px;
+            font-weight: bold;
+        }
+        .infobox img {
+            width: 100%;
+            border: none !important;
+            border-radius: 0 !important;
+            display: block;
+            margin-bottom: 0 !important;
+        }
+
+        /* Стилі для плеєра у Вікі-панелі */
+        .infobox-audio {
+            background-color: #2b241a;
+            padding: 12px;
+            text-align: center;
+            border-bottom: 1px solid #5a4f3e;
+            box-shadow: inset 0px 5px 10px rgba(0,0,0,0.3);
+        }
+        .infobox-audio span {
+            display: block;
+            color: #f1c40f;
+            font-family: 'Amatic SC', cursive;
+            font-size: 1.8rem;
+            margin-bottom: 8px;
+            letter-spacing: 1px;
+        }
+        /* Робимо сам плеєр трохи меншим і акуратнішим */
+        .infobox-audio audio {
+            width: 95%;
+            height: 35px;
+            outline: none;
+            border-radius: 20px;
+        }
+
+        .infobox-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.95rem;
+            color: #dcd0c0;
+            line-height: 1.5;
+        }
+        .infobox-table th, .infobox-table td {
+            border-top: 1px solid #5a4f3e;
+            padding: 12px 15px;
+            vertical-align: top;
+        }
+        .infobox-table th {
+            text-align: left;
+            font-weight: bold;
+            color: #fff;
+            width: 40%;
+            background-color: rgba(0, 0, 0, 0.15);
+        }
+
+        /* --- СТИЛІ ДЛЯ ГАЛЕРЕЇ АРТІВ --- */
+        .sidebar-gallery {
+            margin-top: 30px;
+            background-color: #382f22;
+            border-radius: 12px;
+            padding: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+        }
+        .sidebar-gallery h3 {
+            font-family: 'Amatic SC', cursive;
+            font-size: 2.2rem;
+            color: #f1c40f;
+            text-align: center;
+            margin-top: 0;
+            margin-bottom: 15px;
+            border-bottom: 1px solid #5a4f3e;
+            padding-bottom: 5px;
+        }
+        .sidebar-gallery-item {
+            overflow: hidden;
+            border-radius: 6px;
+            margin-bottom: 15px;
+            border: 2px solid #1a1816;
+        }
+        .sidebar-gallery-item:last-child {
+            margin-bottom: 0;
+        }
+        .sidebar-gallery img {
+            width: 100%;
+            display: block;
+            transition: transform 0.4s ease;
+        }
+        .sidebar-gallery img:hover {
+            transform: scale(1.08);
+            cursor: pointer;
+        }
+    </style>
+
     <div class="main-content">
         <h1>Little Nightmares</h1>
 
         <p><b>Little Nightmares</b> (укр. <i>Маленькі кошмари</i>) — це похмура казка, яка змусить вас згадати свої дитячі страхи.</p>
 
-        <p>Допоможіть Шостій вибратися з Чрева — дивного підводного судна, населеного моторошними істотами, які тільки й шукають, чим би поживитися...</p>
+        <h2 style="margin-top: 30px; border-bottom: 2px solid #f1c40f; padding-bottom: 5px;">Сюжет</h2>
 
-        <h2>Розділи Вікі</h2>
+        <div style="color: #ccc; line-height: 1.6; text-align: justify; margin-bottom: 40px;">
+            <p><b>Little Nightmares</b> починає розповідь на нижньому рівні <b>Чрева</b> — корабля, наповненого гротескними й моторошними монстрами різних форм і розмірів. Головною героїнею гри є маленька дівчинка в жовтому дощовику на ім'я <b>Шоста</b>, яку ми будемо супроводжувати в грі в міру того, як вона намагається вибратися з корабля живою.</p>
+
+            <p>Гра починається з того, що Шостій сниться кошмар, у якому до неї наближається жінка в масці, після чого вона прокидається у великій валізі. Дівчинка, пройшовши через низку приміщень, потрапляє у В'язницю для дітей, яку охороняє довгорукий <b>Доглядач</b>. Уникаючи виявлення охоронними системами та монстром, вона проходить через спальні зі сплячими ув'язненими дітьми. Незабаром дівчинка починає відчувати напад голоду, який їй допомагає вгамувати невідомий хлопчик у їдальні, кинувши Шостій шматок хліба через решітку. Після цього, пройшовши ще кілька кімнат, дівчинка покидає В'язницю.</p>
+
+            <p>Незабаром Доглядач дізнається про втечу героїні, тому він заманює її шматком м'яса в клітку, коли у дівчинки трапляється другий напад голоду, і відносить у Лігво. Вибравшись із неї, Шоста привертає увагу монстра і, таким чином, протягом усього рівня він женеться за нею, поки не заганяє в кімнату, що перегороджує йому шлях до дівчинки водонепроникними дверима. Він просовує руки через неї, щоб дістати втікачку, але та ламає клітку, що тримала двері, відрубавши руки Доглядачу.</p>
+
+            <p>Потрапивши на Кухню, Шоста втретє починає голодувати. Їй нічого не залишається, окрім як з'їсти щура, що попався в мишоловку. На Кухні їй трапляються <b>Кухарі-близнюки</b>, які відразу ж агресивно відреагували на непрохану гостю. Героїні, дивом ховаючись від братів по всій кухні, в результаті вдається втекти в Гостьову зону за допомогою гаків для перенесення згортків із м'ясом.</p>
+
+            <p>У наступній локації Шоста зустрічає <b>Гостей</b>, які припливли на Чрево, щоб наїстися стравами, приготованими спеціально для них. Там же вона вперше бачить жінку зі свого сну — <b>Леді</b>, яка керує кораблем. Однак незабаром гості збожеволіли до такої міри, що у них з'явилося бажання спіймати і зжерти Шосту. Їх стає все більше і, нарешті, гості утворюють хвилю, що змітає все навколо, прагнучи зловити героїню. Вони женуться за нею, поки та з останніх сил не перестрибнула на балкон іншої частини зони. Там дівчинка знову починає корчитися від голоду. <b>Ном</b>, що стояв на шляху, вирішує дати їй сосиску, але замість неї Шоста перегризає своєму доброзичливцю горло, показавши свою темну сторону.</p>
+
+            <p>Нарешті, потрапивши в Покої Леді, героїня зустрічає ту саму жінку, яку вона бачила у своєму кошмарі. Забравши ключ від дверей до гардеробної, Шоста привертає увагу Леді, після чого та починає гнатися за нею, поки дівчинка не тікає в покинуту частину чертогів. Там вона серед розбитих дзеркал знаходить невелике ціле дзеркало, з яким зустрічає Леді в гардеробній. Користуючись цим дзеркалом, вона відбиває промені світла на Леді, тим самим завдаючи їй сильного болю. У підсумку після шостого нападу дзеркало вибухає, оглушаючи Шосту і Леді. Дівчинка приходить до тями, і відчуває голод уп'яте. Шоста підходить до Леді і з упевненістю перегризає шию жінці. Разом із втамуванням голоду героїня отримує здатність поглинати душі живих істот, чим вона скористалася, убивши частину гостей і вибравшись із Чрева на поверхню.</p>
+        </div>
+
+        <h2 style="margin-top: 40px; border-bottom: 2px solid #f1c40f; padding-bottom: 5px;">Рейтинг та критика</h2>
+        <div style="color: #ccc; line-height: 1.6; text-align: justify; margin-bottom: 30px;">
+            <p>Гра отримала здебільшого позитивні та вкрай позитивні відгуки від критиків і гравців. На даний момент на сайті Metacritic оцінка <i>Little Nightmares</i> становить 78/100 балів від критиків і 80% від користувачів.</p>
+        </div>
+
+        <h2 style="margin-top: 40px; border-bottom: 2px solid #f1c40f; padding-bottom: 5px;">Цікаві факти</h2>
+        <div style="color: #ccc; line-height: 1.6; text-align: justify; margin-bottom: 30px;">
+            <ul style="padding-left: 20px;">
+                <li style="margin-bottom: 10px;"><b>Перша назва:</b> На ранніх етапах розробки проект мав зовсім іншу назву — <i>«Голод» (Hunger)</i>. Проте після укладання угоди з видавцем Bandai Namco гру перейменували на звичну нам <i>Little Nightmares</i>, щоб краще підкреслити атмосферу боротьби з дитячими страхами.</li>
+                <li style="margin-bottom: 10px;"><b>Ляльковий будиночок:</b> Розробники з Tarsier Studios навмисно створили візуальний дизайн і поведінку камери таким чином, щоб кожен рівень нагадував гігантський ляльковий будиночок. Це підкреслює крихітність і беззахисність Шостої у цьому великому світі.</li>
+                <li style="margin-bottom: 10px;"><b>Джерела натхнення:</b> Моторошна естетика Чрева та його мешканців створювалася під враженням від культового аніме Хаяо Міядзакі <i>«Віднесені привидами»</i>, а також надихалася похмурим французьким фільмом <i>«Місто загублених дітей»</i>.</li>
+                <li style="margin-bottom: 10px;"><b>Секретні обійми:</b> У грі є прихована, але дуже зворушлива механіка: якщо Шоста підійде до маленького Нома і ви натиснете кнопку взаємодії, вона його міцно обійме. Після цього Ном перестане її боятися і навіть буде слідувати за нею деякий час.</li>
+            </ul>
+        </div>
+
+        <h2 style="margin-top: 40px; border-bottom: 2px solid #f1c40f; padding-bottom: 5px;">Посилання</h2>
+        <div class="wiki-buttons-grid" style="margin-bottom: 50px; margin-top: 20px;">
+            <a href="https://en.bandainamcoent.eu/little-nightmares/little-nightmares" target="_blank" class="wiki-btn">Офіційний сайт</a>
+            <a href="https://store.steampowered.com/app/424840/Little_Nightmares/" target="_blank" class="wiki-btn">Сторінка у Steam</a>
+        </div>
+
+        <h2 style="margin-top: 40px;">Розділи Вікі</h2>
 
         <div class="wiki-buttons-grid">
             {% for section in sections %}
-                <a href="{{ url_for('section_page', section_slug=section['slug']) }}" class="wiki-btn">
-                    {{ section['name'] }}
-                </a>
+
+                {% if section['name']|lower == 'монстри' %}
+                    <a href="{{ url_for('section_page', section_slug=section['slug']) }}" class="wiki-btn">
+                        ТРЕЙЛЕР
+                    </a>
+                {% else %}
+                    <a href="{{ url_for('section_page', section_slug=section['slug']) }}" class="wiki-btn">
+                        {{ section['name'] }}
+                    </a>
+                {% endif %}
+
             {% else %}
                 <p>Розділів немає.</p>
             {% endfor %}
@@ -23,20 +177,76 @@
     </div>
 
     <aside class="sidebar">
+
         <div class="infobox">
-            <div class="infobox-title">Little Nightmares</div>
+            <div class="infobox-title">LITTLE NIGHTMARES</div>
 
-            <img src="{{ url_for('static', filename='game_cover.jpg') }}"
-                 alt="Обкладинка гри"
-                 style="width: 100%; border-radius: 5px; margin-bottom: 15px; border: 1px solid #555; display: block;">
+            <img src="{{ url_for('static', filename='game_cover.jpg') }}" alt="Обкладинка гри">
 
-            <div class="infobox-data">
-                <p><b>Розробник:</b><br> Tarsier Studios</p>
-                <p><b>Видавець:</b><br> Bandai Namco</p>
-                <p><b>Дата випуску:</b><br> 28 квітня 2017</p>
-                <p><b>Жанр:</b><br> Horror, Platformer</p>
+            <div class="infobox-audio">
+                <span>Головна тема</span>
+                <audio controls>
+                    <source src="{{ url_for('static', filename='sounds/theme1.mp3') }}" type="audio/mpeg">
+                    Ваш браузер не підтримує аудіоплеєр.
+                </audio>
+            </div>
+
+            <table class="infobox-table">
+                <tr>
+                    <th>Розробник</th>
+                    <td>Tarsier Studios</td>
+                </tr>
+                <tr>
+                    <th>Видавець</th>
+                    <td>Bandai Namco<br>Entertainment</td>
+                </tr>
+                <tr>
+                    <th>Директор(и)</th>
+                    <td>Пер Бергман<br>Ніклас Ханссон</td>
+                </tr>
+                <tr>
+                    <th>Дизайнери</th>
+                    <td>Денніс Таладжич<br>Асгер Крістіансен</td>
+                </tr>
+                <tr>
+                    <th>Художники</th>
+                    <td>Пер Бергман<br>Крістер Йоханссон<br>Себастьян Бастіан</td>
+                </tr>
+                <tr>
+                    <th>Композитор(и)</th>
+                    <td>Тобіас Ліля</td>
+                </tr>
+                <tr>
+                    <th>Платформа</th>
+                    <td>Windows<br>PlayStation 4<br>Xbox One<br>Nintendo Switch<br>iOS<br>Android</td>
+                </tr>
+                <tr>
+                    <th>Дата випуску</th>
+                    <td>28 квітня 2017</td>
+                </tr>
+                <tr>
+                    <th>Жанр</th>
+                    <td>Платформер<br>Survival horror</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="sidebar-gallery">
+            <h3>Арти гри</h3>
+
+            <div class="sidebar-gallery-item">
+                <img src="{{ url_for('static', filename='art1.jpg') }}" alt="Концепт-арт 1" onerror="this.style.display='none'">
+            </div>
+
+            <div class="sidebar-gallery-item">
+                <img src="{{ url_for('static', filename='art2.jpg') }}" alt="Концепт-арт 2" onerror="this.style.display='none'">
+            </div>
+
+            <div class="sidebar-gallery-item">
+                <img src="{{ url_for('static', filename='art3.jpg') }}" alt="Концепт-арт 3" onerror="this.style.display='none'">
             </div>
         </div>
+
     </aside>
 
 {% endblock %}
